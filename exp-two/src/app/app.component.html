@@ -1,0 +1,25 @@
+<div class="container">
+  <p class="text-danger text-center border" *ngIf="isError">Failed to fetch todo list from server</p>
+  <form>
+    <div class="form-group">
+      <h1 class="text-center text-primary">
+        Todo App
+      </h1>
+      <div class="input-group-prepend">
+        <input type="text" class="form-control" placeholder="Add Todo" name="todo" #todo id="todo-input-field">
+        <span class="input-group-text add-todo-button cursor-pointer" (click)="addTodo(todo.value)">
+          Add
+        </span>
+      </div>
+    </div>
+  </form>
+  <div class="data">
+    <ul class="list-instyled to-dos-list p-0" *ngIf="todoArray.length > 0">
+      <li *ngFor="let todo of todoArray let i = index" class="todo-item border d-flex flex-row justify-content-between">
+        <div>{{todo.desc}}</div>
+        <button class="btn btn-danger delete-todo-button cursor-pointer" (click)="deleteToDo(todo.id)">delete</button>
+      </li>
+    </ul>
+    <p class="text-list text-center empty-todo-array" *ngIf="todoArray.length <= 0">No Data</p>
+  </div>
+</div>
